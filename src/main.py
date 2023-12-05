@@ -4,15 +4,15 @@ import time
 import pose_class as pm
 
 detector = pm.poseDetector()
-# cap = cv2.VideoCapture('data/squat_video.mp4')
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture('data/squat_video.mp4')
+# cap = cv2.VideoCapture(0)
 
 count = 0
 direction = 0
 
 while True:
     success, img = cap.read()
-    # img = cv2.resize(img, (600, 720))
+    img = cv2.resize(img, (600, 720))
     # img = cv2.imread('data/squat.jpg')
 
     img = detector.findPose(img, draw=False)
