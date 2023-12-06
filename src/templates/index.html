@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Choose Exercise</title>
+    <style>
+        .exercise-container {
+            display: flex;
+            justify-content: space-between; /* Space between the two sections */
+        }
+        .exercise-choice {
+            flex: 1; /* Equal width for both sections */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Start from the top */
+            align-items: center;
+            height: 800px;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 24px;
+            background-position: center;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            position: relative; /* Allows absolute positioning of the button */
+        }
+        .squat {
+            background-image: url('/static/images/squat.jpg');
+        }
+        .push-up {
+            background-image: url('/static/images/push_up.jpg');
+        }
+        .exercise-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: absolute; /* Absolute positioning */
+            bottom: 100px; /* Adjust the bottom margin */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Center horizontally */
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .exercise-choice {
+                height: 200px;
+                background-size: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="exercise-container">
+        <div class="exercise-choice squat">
+            <form action="/select_exercise" method="post">
+                <input type="hidden" name="exercise" value="squat">
+                <button type="submit" class="exercise-button">Start Squat Exercise</button>
+            </form>
+        </div>
+        <div class="exercise-choice push-up">
+            <form action="/select_exercise" method="post">
+                <input type="hidden" name="exercise" value="push_up">
+                <button type="submit" class="exercise-button">Start Push Up Exercise</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

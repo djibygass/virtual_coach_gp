@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Push Up Exercise</title>
+    <style>
+        body {
+            background-image: url('/static/images/workout.jpg'); /* Set the common wallpaper */
+            background-position: center;
+            background-size: cover; /* Cover the entire viewport */
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-size: 36px;
+            margin-top: 50px; /* Adjust the top margin */
+        }
+        img {
+            max-width: 100%;
+            margin-top: 20px; /* Adjust the top margin */
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px; /* Adjust the top margin */
+        }
+    </style>
+</head>
+<body>
+    <h1>Push Up Pose Detection</h1>
+    <img src="{{ url_for('video_feed_push_up') }}" />
+    <br>
+    <button onclick="window.location.href='/'">Back to Home</button>
+</body>
+</html>

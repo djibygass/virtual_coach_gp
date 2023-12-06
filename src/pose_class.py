@@ -1,6 +1,5 @@
 import cv2
 import mediapipe as mp
-import time
 import math
 import numpy as np
 
@@ -70,6 +69,7 @@ class poseDetector():
             
             if (angle <= 200 and angle >= 165) or \
                 (angle <= 40 and angle >=25) or \
+                (angle <= 70 and angle >=25) or \
                 (angle <= 315 and angle >= 290):
                 color = (0, 255, 0)
             else:
@@ -84,29 +84,3 @@ class poseDetector():
             cv2.putText(img, str(int(angle)), (x2 - 50, y2 + 50),
                         cv2.FONT_HERSHEY_PLAIN, 2, color, 2)
         return angle
-
-def main():
-    cap = cv2.VideoCapture('PoseVideos/1.mp4')
-    pTime = 0
-    detector = poseDetector()
-    while True:
-        success, img = cap.read()
-        img = detector.findPose(img)
-        lmList = detector.findPosition(img, draw=False)
-        if len(lmList) != 0:
-            print(lmList[14])
-            cv2.circle(img, (lmList[14][1], lmList[14][2]), 15, (0, 0, 255), cv2.FILLED)
-
-        cTime = time.time()
-        fps = 1 / (cTime - pTime)
-        pTime = cTime
-
-        cv2.putText(img, str(int(fps)), (70, 50), cv2.FONT_HERSHEY_PLAIN, 3,
-                    (255, 0, 0), 3)
-
-        cv2.imshow("Image", img)
-        cv2.waitKey(1)
-
-
-if __name__ == "__main__":
-    main()
